@@ -1,0 +1,18 @@
+Description: prevent loading the native extension for the wrong version of Ruby
+ let gem2deb figure out the path where to find the right one
+Author: Cédric Boutillier <boutil@debian.org>
+Last-Update: 2016-07-02
+Forwarded: no
+--- a/test/test_helper.rb
++++ b/test/test_helper.rb
+@@ -7,8 +7,8 @@
+ lib = File.expand_path(File.join(root, 'lib'))
+ ext = File.expand_path(File.join(root, 'ext', 'libxml'))
+ 
+-$LOAD_PATH << lib
+-$LOAD_PATH << ext
++#$LOAD_PATH << lib
++#$LOAD_PATH << ext
+ 
+ require 'xml'
+ require 'minitest/autorun'

@@ -1,0 +1,368 @@
+ruby-libxml (3.2.1-deepin1) unstable; urgency=medium
+
+  * Rebuild
+
+ -- Deepin Packages Builder <packages@deepin.org>  Fri, 11 Nov 2022 18:04:41 +0800
+
+ruby-libxml (3.2.1-2) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Sergio Durigan Junior ]
+  * d/p/fix-tests-libxml2-2.9.12.patch:
+    Fix testsuite failures when compiling with libxml2 2.9.12. (Closes: #991606)
+
+  [ Mattia Rizzolo ]
+  * Bump libxml2-dev build-dep to >= 2.9.12, due to the above patch.
+  * Run the build under LC_ALL=C.UTF-8, as a test fails in a non-utf8 locale.
+  * Update Homepage field.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Sun, 19 Sep 2021 20:36:24 +0200
+
+ruby-libxml (3.2.1-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ Debian Janitor ]
+  * Apply multi-arch hints.
+    + ruby-libxml: Add Multi-Arch: same.
+  * Update standards version to 4.5.1, no changes needed.
+
+  [ Pirate Praveen ]
+  * New upstream version 3.2.1
+  * Bump Standards-Version to 4.6.0 (no changes needed)
+  * Refresh patches
+
+ -- Pirate Praveen <praveen@debian.org>  Fri, 20 Aug 2021 23:09:13 +0530
+
+ruby-libxml (3.2.0-1) unstable; urgency=medium
+
+  * New upstream version 3.2.0
+  * Update packaging
+  * Drop most of the patches
+  * Skip test_nonet test
+
+ -- Cédric Boutillier <boutil@debian.org>  Fri, 31 Jul 2020 16:16:11 +0200
+
+ruby-libxml (3.1.0-2) unstable; urgency=medium
+
+  * Team upload
+
+  [ Utkarsh Gupta ]
+  * Add salsa-ci.yml
+
+  [ Michael R. Crusoe ]
+  * Standards-Version: 4.5.0 (routine-update)
+  * debhelper-compat 12 (routine-update)
+  * Secure URI in copyright format (routine-update)
+  * Remove trailing whitespace in debian/changelog (routine-update)
+  * Trim trailing whitespace.
+  * debian/copyright: use spaces rather than tabs to start continuation
+    lines.
+  * Use secure URI in Homepage field.
+  * Fix day-of-week for changelog entry 0.8.3-1.
+  * Remove Ryan Niebur from the uploaders list (Closes: #856367)
+  * Fix tests for libxml2 2.9.10+ (Closes: #949493)
+
+ -- Michael R. Crusoe <m.r.crusoe@vu.nl>  Thu, 27 Feb 2020 20:50:34 +0100
+
+ruby-libxml (3.1.0-1) unstable; urgency=medium
+
+  * New upstream version 3.1.0
+  * Move debian/watch to gemwatch.debian.net
+  * Use salsa.debian.org in Vcs-* fields
+  * Bump Standards-Version to 4.1.5 (no changes needed)
+  * Bump debhelper compatibility level to 11
+  * Update patch list
+    + remove avoid_infinite_loop_ruby22.patch (not needed anymore)
+    + remove restore_internal_encoding.patch (fixed upstream)
+    + add end-of-line.patch and fix-test-failures.patch to fix tests
+
+ -- Cédric Boutillier <boutil@debian.org>  Tue, 31 Jul 2018 13:47:01 +0200
+
+ruby-libxml (2.9.0-2) unstable; urgency=medium
+
+  * Add restore_internal_encoding.patch to avoid test failures related to
+    encoding wrongly set
+  * Use the rake method to run the tests
+
+ -- Cédric Boutillier <boutil@debian.org>  Sun, 03 Jul 2016 18:46:36 +0200
+
+ruby-libxml (2.9.0-1) unstable; urgency=medium
+
+  * Reupload to unstable
+
+ -- Cédric Boutillier <boutil@debian.org>  Sun, 03 Jul 2016 00:32:31 +0200
+
+ruby-libxml (2.9.0-1~exp1) unstable; urgency=medium
+
+  * Imported Upstream version 2.9.0
+  * Bump Standards to 3.9.8 (no changes)
+  * Disable temporarily exclusion of some arches for tests
+  * Drop 0100_run_builtin_shell_command_ulimit_in_tests.patch and
+    libxml2-2.9.2.patch, not needed anymore
+  * Add unicode.patch to force external encoding to UTF-8
+  * Refresh patches
+
+ -- Cédric Boutillier <boutil@debian.org>  Sat, 02 Jul 2016 20:32:46 +0200
+
+ruby-libxml (2.8.0-5) unstable; urgency=medium
+
+  * Skip also s390x for the tests...
+  * Skip test_document from tc_reader (randomly failing)
+
+ -- Cédric Boutillier <boutil@debian.org>  Fri, 04 Mar 2016 14:43:15 +0100
+
+ruby-libxml (2.8.0-4) unstable; urgency=medium
+
+  * Be not so precise, and exclude tests on arm*, powercp and hppa
+
+ -- Cédric Boutillier <boutil@debian.org>  Thu, 03 Mar 2016 22:07:39 +0100
+
+ruby-libxml (2.8.0-3) unstable; urgency=medium
+
+  * Exclude some tests on specific architectures
+
+ -- Cédric Boutillier <boutil@debian.org>  Wed, 02 Mar 2016 19:41:29 +0100
+
+ruby-libxml (2.8.0-2) unstable; urgency=medium
+
+  * debian/patches
+    + add avoid_messing_with_loadpath.patch to let gem2deb find the correct
+      version of the native extension for the tests
+    + skip some tests resulting in various issues
+  * Bump Standards-Version to 3.9.7 (no changes needed)
+  * Bump debhelper compatibility level to 9
+  * Refresh packaging with dh-make-ruby -w
+  * Use https:// for Vcs-* fields
+
+ -- Cédric Boutillier <boutil@debian.org>  Tue, 01 Mar 2016 14:48:24 +0100
+
+ruby-libxml (2.8.0-1) unstable; urgency=medium
+
+  * Imported Upstream version 2.8.0
+  * Add DEP-3 header to libxml2-2.9.2.patch
+  * Drop 0200_do_not_overwrite_LDFLAGS.patch, fixed upstream
+  * Add avoid_infinite_loop_ruby22.patch, disabling hanging test with ruby2.2
+  * Refresh packaging
+    + remove Filipe Lautert from uploaders (Closes: #762562)
+    + update long description to remove mention of benchmark (Closes: #781723)
+    + replace MIT license name by Expat in copyright file
+    + drop useless loadpath modification in ruby-tests.rb
+    + build-depend on ruby-test-unit, as no version of it is provided with
+      ruby2.2
+
+ -- Cédric Boutillier <boutil@debian.org>  Sun, 21 Jun 2015 08:45:20 +0200
+
+ruby-libxml (2.7.0-3) unstable; urgency=medium
+
+  * Team upload.
+  * debian/patches/libxml2-2.9.2.patch: fix tests when running against libxml2
+    2.9.2 (Closes: #771217). Thanks to Colin Watson <cjwatson@ubuntu.com>.
+
+ -- Antonio Terceiro <terceiro@debian.org>  Wed, 03 Dec 2014 20:30:48 -0200
+
+ruby-libxml (2.7.0-2) unstable; urgency=medium
+
+  * Team upload.
+  * Bump Build-Depends for ruby2.0 support, drop ruby1.8 support
+  * Update Standards-Version to 3.9.5 (no changes)
+
+ -- Christian Hofstaedtler <zeha@debian.org>  Mon, 23 Dec 2013 21:21:27 +0100
+
+ruby-libxml (2.7.0-1) unstable; urgency=low
+
+  * Imported Upstream version 2.7.0
+    + fix dereferencing pointer to incomplete type error (Closes: #713723)
+  * debian/control:
+    + use canonical URI in Vcs-* fields
+    + bump Standards-Version to 3.9.4 (no changes needed)
+    + drop transitional packages
+    + add myself to Uploaders
+  * debian/copyright:
+      use DEP5 copyright-format/1.0 official URL for Format field
+  * debian/rules: ignore test failures with ruby1.8
+  * debian/patches:
+    + do not apply fix_test_under_1.9.1 (not needed)
+    + refresh 0100_run_builtin_shell_command_ulimit_in_tests.patch
+    + add 0200_do_not_overwrite_LDFLAGS.patch: do not overwrite system LDFLAGS
+
+ -- Cédric Boutillier <boutil@debian.org>  Mon, 19 Aug 2013 12:00:38 +0200
+
+ruby-libxml (2.3.2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Gunnar Wolf <gwolf@debian.org>  Tue, 27 Mar 2012 16:17:27 -0600
+
+ruby-libxml (2.2.2-2) unstable; urgency=low
+
+  * Stop ignoring the tests' results - Thanks to Cédric Boutillier for
+    the patch
+
+ -- Gunnar Wolf <gwolf@debian.org>  Mon, 28 Nov 2011 17:29:33 -0600
+
+ruby-libxml (2.2.2-1) unstable; urgency=low
+
+  * New upstream release
+  * Added myself to uploaders
+  * Repackaged using the gem2deb infrastructure; fixes FTBFS (Closes: #646652)
+
+ -- Gunnar Wolf <gwolf@debian.org>  Wed, 23 Nov 2011 14:12:26 -0600
+
+libxml-ruby (1.1.3-2) unstable; urgency=low
+
+  * Upload including Ruby 1.9.1 support.
+  * debian/control:
+    - Bumped standards version to 3.8.4; no changes required.
+    - Bumped ruby-pkg-tools build depend to >= 0.17.
+    - Added a package entry for libxml-ruby1.9.1.
+    - Added ruby1.9.1 and ruby1.9.1-dev to the build depends.
+
+ -- Paul van Tilburg <paulvt@debian.org>  Sun, 14 Feb 2010 14:37:46 +0100
+
+libxml-ruby (1.1.3-1) unstable; urgency=low
+
+  [ Ryan Niebur ]
+  * New upstream release
+
+  [ Filipe Lautert ]
+  * Revised and uploaded the package.
+
+ -- Filipe Lautert <filipe@debian.org>  Tue, 07 Apr 2009 21:33:09 -0300
+
+libxml-ruby (1.1.2-1) unstable; urgency=low
+
+  [ Ryan Niebur ]
+  * New upstream release
+  * add myself to uploaders
+  * bump debhelper version/compat to 5
+  * Debian policy 3.8.1
+  * remove XS-Dm-Upload-Allowed field ... there are no DMs in
+    Maintainer/Uploaders
+  * change Section to ruby
+  * stop using the simple-patchsys cdbs rules, there are no patches
+  * add misc:Depends
+  * differentiate the short descriptions
+  * update copyright
+
+  [ Filipe Lautert ]
+  * Revised and uploaded the package.
+
+ -- Filipe Lautert <filipe@debian.org>  Sat, 21 Mar 2009 08:28:16 -0300
+
+libxml-ruby (0.9.4-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Filipe Lautert <filipe@debian.org>  Sat, 29 Nov 2008 15:15:26 -0200
+
+libxml-ruby (0.8.3-1) unstable; urgency=low
+
+  * New upstream version (closes: #485738).
+
+ -- Filipe Lautert <filipe@debian.org>  Fri, 01 Aug 2008 13:07:41 -0300
+
+libxml-ruby (0.5.2.0-3) unstable; urgency=low
+
+  * Set section to "libs" instead of "interpreters". This is a library.
+
+ -- Paul van Tilburg <paulvt@debian.org>  Sat, 05 Apr 2008 00:39:49 +0200
+
+libxml-ruby (0.5.2.0-2) unstable; urgency=low
+
+  * Fixed typo in the value of the XS-Dm-Upload-Allowed field.
+
+ -- Paul van Tilburg <paulvt@debian.org>  Sat, 05 Apr 2008 00:01:17 +0200
+
+libxml-ruby (0.5.2.0-1) unstable; urgency=low
+
+  [ Filipe Lautert ]
+  * New upstream version (closes: #443409).
+  * Added 'Dm-Upload-Allowed: yes' field to debian/control file.
+
+  [ Lucas Nussbaum ]
+  * Use new Homepage dpkg header.
+
+  [ Paul van Tilburg ]
+  * Added Vcs-* fields.
+  * Bumped standards version to 3.7.3; no changes required.
+
+ -- Paul van Tilburg <paulvt@debian.org>  Sat, 08 Dec 2007 16:41:58 +0100
+
+libxml-ruby (0.3.8.4-3) unstable; urgency=low
+
+  * Added test before remove empty file, so package can be build twice
+    in a row (closes: #424542).
+
+ -- Filipe Lautert <filipe@icewall.org>  Thu, 17 May 2007 01:50:41 -0300
+
+libxml-ruby (0.3.8.4-2) unstable; urgency=low
+
+  [ Filipe Lautert ]
+  * Updated debian/control and removed debian/control.in so it reflects
+    the new way of describing maintainers and uploaders fields from the
+    Pkg-Ruby-Extras Team.
+
+ -- Filipe Lautert <filipe@icewall.org>  Mon, 16 Apr 2007 09:54:33 -0300
+
+libxml-ruby (0.3.8.4-1) unstable; urgency=medium
+
+  * Maintenance release that fixes a critical bug in attribute handling.
+
+ -- Filipe Lautert <filipelautert@celepar.pr.gov.br>  Tue,  5 Dec 2006 08:24:22 -0200
+
+libxml-ruby (0.3.8.2-1) unstable; urgency=medium
+
+  * Synchonized with upstream version - this version closes many critical
+    bugs in upstream code.
+  * Removed silly comment from rules file.
+  * Updated copyright file.
+
+ -- Filipe Lautert <filipelautert@celepar.pr.gov.br>  Fri,  1 Dec 2006 15:13:54 -0200
+
+libxml-ruby (0.3.8-1) unstable; urgency=low
+
+  * Package adopted - maintenance changed to Debian/Ruby Extras team.
+    Closes: #335698.
+  * Converted debian/rules to cdbs.
+  * Added remove command to debian/rules that removes empty test file
+    resolving litian warning.
+  * Conforms to Standards version 3.7.2.
+
+ -- Filipe Lautert <filipelautert@celepar.pr.gov.br>  Tue,  7 Nov 2006 21:35:12 -0300
+
+libxml-ruby (0.3.4-4) unstable; urgency=low
+
+  * QA upload.
+  * Add a libxml-ruby metapackage as recommended by Debian Ruby Policy.
+    Closes: #282759.
+  * Change section to interpreters.  Closes: #260944.
+  * debian/copyright: Update upstream URL.
+  * debian/dirs: $(sitedir) already handled by the Makefile; remove.
+  * debian/docs: README and TODO already handled by cdbs; remove.
+  * debian/watch: Add.
+  * Conforms to Standards version 3.6.2.
+
+ -- Matej Vela <vela@debian.org>  Sun, 13 Nov 2005 17:38:06 +0100
+
+libxml-ruby (0.3.4-3) unstable; urgency=low
+
+  * Orphaning package, setting maintainer to QA.
+
+ -- Andres Salomon <dilinger@voxel.net>  Tue, 25 Oct 2005 01:44:32 -0400
+
+libxml-ruby (0.3.4-2) unstable; urgency=low
+
+  * Fix FTBFS due to unnecessary libm/atan check; thanks to
+    Andreas Jochens (closes: #265475).
+  * Fix gcc-4.0 FTBFS due to lvalue casts; thanks to
+    Andreas Jochens (closes: #287452).
+
+ -- Andres Salomon <dilinger@voxel.net>  Wed, 29 Dec 2004 07:37:28 -0500
+
+libxml-ruby (0.3.4-1) unstable; urgency=low
+
+  * Initial release (closes: #228534).
+
+ -- Andres Salomon <dilinger@voxel.net>  Fri, 16 Jul 2004 22:12:41 -0400

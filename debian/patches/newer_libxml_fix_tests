@@ -1,0 +1,44 @@
+From: Michael R. Crusoe <michael.crusoe@gmail.com>
+Subject: fix tests for libxml2 2.9.10+
+Bug: https://github.com/xml4r/libxml-ruby/issues/161
+Bug-Debian: https://bugs.debian.org/949493
+--- ruby-libxml.orig/test/test_dtd.rb
++++ ruby-libxml/test/test_dtd.rb
+@@ -84,7 +84,7 @@
+     assert_nil(error.file)
+     assert_nil(error.line)
+     assert_equal('invalid', error.str1)
+-    assert_equal('invalid', error.str2)
++    assert_nil(error.str2)
+     assert_nil(error.str3)
+     assert_equal(0, error.int1)
+     assert_equal(0, error.int2)
+--- ruby-libxml.orig/test/test_sax_parser.rb
++++ ruby-libxml/test/test_sax_parser.rb
+@@ -254,21 +254,21 @@
+     assert_equal("start_element: Results, attr: {}", result[i+=1])
+     assert_equal("start_element_ns: Results, attr: {}, prefix: , uri: , ns: {}", result[i+=1])
+     assert_equal("characters: \n", result[i+=1])
+-    assert_equal("error: Fatal error: Premature end of data in tag Results line 1 at :2.", result[i+=1])
++    assert_equal("error: Fatal error: EndTag: '</' not found at :2.", result[i+=1])
+     assert_equal("end_document", result[i+=1])
+ 
+     refute_nil(error)
+     assert_kind_of(XML::Error, error)
+-    assert_equal("Fatal error: Premature end of data in tag Results line 1 at :2.", error.message)
++    assert_equal("Fatal error: EndTag: '</' not found at :2.", error.message)
+     assert_equal(XML::Error::PARSER, error.domain)
+-    assert_equal(XML::Error::TAG_NOT_FINISHED, error.code)
++    assert_equal(XML::Error::LTSLASH_REQUIRED, error.code)
+     assert_equal(XML::Error::FATAL, error.level)
+     assert_nil(error.file)
+     assert_equal(2, error.line)
+-    assert_equal('Results', error.str1)
++    assert_nil(error.str1)
+     assert_nil(error.str2)
+     assert_nil(error.str3)
+-    assert_equal(1, error.int1)
++    assert_equal(0, error.int1)
+     assert_equal(1, error.int2)
+     assert_nil(error.node)
+   end

@@ -1,0 +1,83 @@
+Author: Sergio Durigan Junior <sergiodj@ubuntu.com>
+Forwarded: yes, https://github.com/xml4r/libxml-ruby/pull/173
+Bug: https://github.com/xml4r/libxml-ruby/issues/172
+Bug-Ubuntu: https://bugs.launchpad.net/libxml-ruby/+bug/1942130
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=991606
+Last-Update: 2021-08-30
+
+This patch fixes a number of test issues that started happening after
+Ubuntu moved to libmlx2 2.9.12+dfsg-2.  They are:
+
+* num_chars has been deprecated and is now always set to 0.  See
+  https://gitlab.gnome.org/GNOME/libxml2/-/commit/438e595a8cccbe48de3a0be2e0c291cfe97080b1.
+
+* The "Fatal error: EndTag..." message has been reverted back to
+  "Fatal error: Premature end of data...".
+
+* Some adjustments to the expected values of error.int1, error.int2
+  and error.str1.
+
+--- a/test/test_parser_context.rb
++++ b/test/test_parser_context.rb
+@@ -127,12 +127,6 @@
+     end
+   end
+ 
+-  if ENV['NOTWORKING']
+-    def test_num_chars
+-      assert_equal(17, context.num_chars)
+-    end
+-  end
+-
+   def test_replace_entities
+     context = LibXML::XML::Parser::Context.new
+     assert(!context.replace_entities?)
+@@ -185,7 +179,7 @@
+     assert_nil(context.name_node)
+     assert_equal(0, context.name_depth)
+     assert_equal(10, context.name_depth_max)
+-    assert_equal(17, context.num_chars)
++    assert_equal(0, context.num_chars)
+     assert_equal(false, context.replace_entities?)
+     assert_equal(1, context.space_depth)
+     assert_equal(10, context.space_depth_max)
+--- a/test/test_sax_parser.rb
++++ b/test/test_sax_parser.rb
+@@ -254,21 +254,21 @@
+     assert_equal("start_element: Results, attr: {}", result[i+=1])
+     assert_equal("start_element_ns: Results, attr: {}, prefix: , uri: , ns: {}", result[i+=1])
+     assert_equal("characters: \n", result[i+=1])
+-    assert_equal("error: Fatal error: EndTag: '</' not found at :2.", result[i+=1])
++    assert_equal("error: Fatal error: Premature end of data in tag Results line 1 at :2.", result[i+=1])
+     assert_equal("end_document", result[i+=1])
+ 
+     refute_nil(error)
+     assert_kind_of(LibXML::XML::Error, error)
+-    assert_equal("Fatal error: EndTag: '</' not found at :2.", error.message)
++    assert_equal("Fatal error: Premature end of data in tag Results line 1 at :2.", error.message)
+     assert_equal(LibXML::XML::Error::PARSER, error.domain)
+-    assert_equal(LibXML::XML::Error::LTSLASH_REQUIRED, error.code)
++    assert_equal(LibXML::XML::Error::TAG_NOT_FINISHED, error.code)
+     assert_equal(LibXML::XML::Error::FATAL, error.level)
+     assert_nil(error.file)
+     assert_equal(2, error.line)
+-    assert_nil(error.str1)
++    refute_nil(error.str1)
+     assert_nil(error.str2)
+     assert_nil(error.str3)
+-    assert_equal(0, error.int1)
++    assert_equal(1, error.int1)
+     assert_equal(1, error.int2)
+     assert_nil(error.node)
+   end
+--- a/test/test_parser.rb
++++ b/test/test_parser.rb
+@@ -271,7 +271,7 @@
+     assert_equal('foz', error.str2)
+     assert_nil(error.str3)
+     assert_equal(1, error.int1)
+-    assert_equal(20, error.int2)
++    assert_equal(18, error.int2)
+     assert_nil(error.node)
+   end
+ 

@@ -1,0 +1,34 @@
+Source: ruby-libxml
+Section: ruby
+Priority: optional
+Maintainer: Debian Ruby Team <pkg-ruby-extras-maintainers@lists.alioth.debian.org>
+Uploaders: Paul van Tilburg <paulvt@debian.org>,
+           Gunnar Wolf <gwolf@debian.org>,
+           Cédric Boutillier <boutil@debian.org>
+Build-Depends: debhelper-compat (= 13),
+               gem2deb (>= 1),
+               libxml2-dev (>= 2.9.12),
+               libxslt1-dev,
+               ruby-test-unit,
+               zlib1g-dev
+Standards-Version: 4.6.0
+Vcs-Git: https://salsa.debian.org/ruby-team/ruby-libxml.git
+Vcs-Browser: https://salsa.debian.org/ruby-team/ruby-libxml
+Homepage: https://xml4r.github.io/libxml-ruby
+Testsuite: autopkgtest-pkg-ruby
+XS-Ruby-Versions: all
+Rules-Requires-Root: no
+
+Package: ruby-libxml
+Architecture: any
+XB-Ruby-Versions: ${ruby:Versions}
+Depends: ${misc:Depends},
+         ${ruby:Depends},
+         ${shlibs:Depends}
+Multi-Arch: same
+Description: Ruby Bindings for LibXML2
+ The Libxml-Ruby project provides Ruby language bindings for the GNOME
+ Libxml2 XML toolkit. It is free software, released under the MIT License.
+ Libxml-ruby's primary advantage over REXML is performance - if speed
+ is your need, these are good libraries to consider, as demonstrated
+ by the informal benchmark below.

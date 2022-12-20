@@ -1,0 +1,7 @@
+#avoid_messing_with_loadpath.patch
+#broken_tests.patch
+end-of-line.patch
+#fix-test-failures.patch
+#newer_libxml_fix_tests
+skip_test_nonet.patch
+fix-tests-libxml2-2.9.12.patch

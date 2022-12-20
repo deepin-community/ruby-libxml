@@ -1,0 +1,417 @@
+Description: change end-of-line from DOS style to UNIX for tests
+Author: Cédric Boutillier <boutil@debian.org>
+Last-Update: 2018-07-31
+
+--- a/test/c14n/given/example-1.xml
++++ b/test/c14n/given/example-1.xml
+@@ -1,14 +1,14 @@
+-<?xml version="1.0"?>
+-
+-<?xml-stylesheet   href="doc.xsl"
+-   type="text/xsl"   ?>
+-
+-<!DOCTYPE doc SYSTEM "doc.dtd">
+-
+-<doc>Hello, world!<!-- Comment 1 --></doc>
+-
+-<?pi-without-data     ?>
+-
+-<!-- Comment 2 -->
+-
+-<!-- Comment 3 -->
++<?xml version="1.0"?>
++
++<?xml-stylesheet   href="doc.xsl"
++   type="text/xsl"   ?>
++
++<!DOCTYPE doc SYSTEM "doc.dtd">
++
++<doc>Hello, world!<!-- Comment 1 --></doc>
++
++<?pi-without-data     ?>
++
++<!-- Comment 2 -->
++
++<!-- Comment 3 -->
+--- a/test/c14n/given/example-2.xml
++++ b/test/c14n/given/example-2.xml
+@@ -1,11 +1,11 @@
+-<doc>
+-   <clean>   </clean>
+-   <dirty>   A   B   </dirty>
+-   <mixed>
+-      A
+-      <clean>   </clean>
+-      B
+-      <dirty>   A   B   </dirty>
+-      C
+-   </mixed>
+-</doc>
++<doc>
++   <clean>   </clean>
++   <dirty>   A   B   </dirty>
++   <mixed>
++      A
++      <clean>   </clean>
++      B
++      <dirty>   A   B   </dirty>
++      C
++   </mixed>
++</doc>
+--- a/test/c14n/given/example-3.xml
++++ b/test/c14n/given/example-3.xml
+@@ -1,18 +1,18 @@
+-<!DOCTYPE doc [<!ATTLIST e9 attr CDATA "default">]>
+-<doc>
+-   <e1   />
+-   <e2   ></e2>
+-   <e3    name = "elem3"   id="elem3"    />
+-   <e4    name="elem4"   id="elem4"    ></e4>
+-   <e5 a:attr="out" b:attr="sorted" attr2="all" attr="I'm"
+-       xmlns:b="http://www.ietf.org" 
+-       xmlns:a="http://www.w3.org"
+-       xmlns="http://www.uvic.ca"/>
+-   <e6 xmlns="" xmlns:a="http://www.w3.org">
+-       <e7 xmlns="http://www.ietf.org">
+-           <e8 xmlns="" xmlns:a="http://www.w3.org">
+-               <e9 xmlns="" xmlns:a="http://www.ietf.org" attr="default"/>
+-           </e8>
+-       </e7>
+-   </e6>
+-</doc>
++<!DOCTYPE doc [<!ATTLIST e9 attr CDATA "default">]>
++<doc>
++   <e1   />
++   <e2   ></e2>
++   <e3    name = "elem3"   id="elem3"    />
++   <e4    name="elem4"   id="elem4"    ></e4>
++   <e5 a:attr="out" b:attr="sorted" attr2="all" attr="I'm"
++       xmlns:b="http://www.ietf.org" 
++       xmlns:a="http://www.w3.org"
++       xmlns="http://www.uvic.ca"/>
++   <e6 xmlns="" xmlns:a="http://www.w3.org">
++       <e7 xmlns="http://www.ietf.org">
++           <e8 xmlns="" xmlns:a="http://www.w3.org">
++               <e9 xmlns="" xmlns:a="http://www.ietf.org" attr="default"/>
++           </e8>
++       </e7>
++   </e6>
++</doc>
+--- a/test/c14n/given/example-4.xml
++++ b/test/c14n/given/example-4.xml
+@@ -1,9 +1,9 @@
+-<!DOCTYPE doc [<!ATTLIST normId id ID #IMPLIED>]>
+-<doc>
+-   <text>First line&#x0d;&#10;Second line</text>
+-   <value>&#x32;</value>
+-   <compute><![CDATA[value>"0" && value<"10" ?"valid":"error"]]></compute>
+-   <compute expr='value>"0" &amp;&amp; value&lt;"10" ?"valid":"error"'>valid</compute>
+-   <norm attr=' &apos;   &#x20;&#13;&#xa;&#9;   &apos; '/>
+-   <normId id=' &apos;   &#x20;&#13;&#xa;&#9;   &apos; '/>
+-</doc>
++<!DOCTYPE doc [<!ATTLIST normId id ID #IMPLIED>]>
++<doc>
++   <text>First line&#x0d;&#10;Second line</text>
++   <value>&#x32;</value>
++   <compute><![CDATA[value>"0" && value<"10" ?"valid":"error"]]></compute>
++   <compute expr='value>"0" &amp;&amp; value&lt;"10" ?"valid":"error"'>valid</compute>
++   <norm attr=' &apos;   &#x20;&#13;&#xa;&#9;   &apos; '/>
++   <normId id=' &apos;   &#x20;&#13;&#xa;&#9;   &apos; '/>
++</doc>
+--- a/test/c14n/result/1-1-without-comments/example-1
++++ b/test/c14n/result/1-1-without-comments/example-1
+@@ -1,4 +1,4 @@
+-<?xml-stylesheet href="doc.xsl"
+-   type="text/xsl"   ?>
+-<doc>Hello, world!</doc>
++<?xml-stylesheet href="doc.xsl"
++   type="text/xsl"   ?>
++<doc>Hello, world!</doc>
+ <?pi-without-data?>
+\ No newline at end of file
+--- a/test/c14n/result/1-1-without-comments/example-2
++++ b/test/c14n/result/1-1-without-comments/example-2
+@@ -1,11 +1,11 @@
+-<doc>
+-   <clean>   </clean>
+-   <dirty>   A   B   </dirty>
+-   <mixed>
+-      A
+-      <clean>   </clean>
+-      B
+-      <dirty>   A   B   </dirty>
+-      C
+-   </mixed>
++<doc>
++   <clean>   </clean>
++   <dirty>   A   B   </dirty>
++   <mixed>
++      A
++      <clean>   </clean>
++      B
++      <dirty>   A   B   </dirty>
++      C
++   </mixed>
+ </doc>
+\ No newline at end of file
+--- a/test/c14n/result/1-1-without-comments/example-3
++++ b/test/c14n/result/1-1-without-comments/example-3
+@@ -1,14 +1,14 @@
+-<doc>
+-   <e1></e1>
+-   <e2></e2>
+-   <e3 id="elem3" name="elem3"></e3>
+-   <e4 id="elem4" name="elem4"></e4>
+-   <e5 xmlns="http://www.uvic.ca" xmlns:a="http://www.w3.org" xmlns:b="http://www.ietf.org" attr="I'm" attr2="all" b:attr="sorted" a:attr="out"></e5>
+-   <e6 xmlns:a="http://www.w3.org">
+-       <e7 xmlns="http://www.ietf.org">
+-           <e8 xmlns="">
+-               <e9 xmlns:a="http://www.ietf.org" attr="default"></e9>
+-           </e8>
+-       </e7>
+-   </e6>
++<doc>
++   <e1></e1>
++   <e2></e2>
++   <e3 id="elem3" name="elem3"></e3>
++   <e4 id="elem4" name="elem4"></e4>
++   <e5 xmlns="http://www.uvic.ca" xmlns:a="http://www.w3.org" xmlns:b="http://www.ietf.org" attr="I'm" attr2="all" b:attr="sorted" a:attr="out"></e5>
++   <e6 xmlns:a="http://www.w3.org">
++       <e7 xmlns="http://www.ietf.org">
++           <e8 xmlns="">
++               <e9 xmlns:a="http://www.ietf.org" attr="default"></e9>
++           </e8>
++       </e7>
++   </e6>
+ </doc>
+\ No newline at end of file
+--- a/test/c14n/result/1-1-without-comments/example-4
++++ b/test/c14n/result/1-1-without-comments/example-4
+@@ -1,9 +1,9 @@
+-<doc>
+-   <text>First line&#xD;
+-Second line</text>
+-   <value>2</value>
+-   <compute>value&gt;"0" &amp;&amp; value&lt;"10" ?"valid":"error"</compute>
+-   <compute expr="value>&quot;0&quot; &amp;&amp; value&lt;&quot;10&quot; ?&quot;valid&quot;:&quot;error&quot;">valid</compute>
+-   <norm attr=" '    &#xD;&#xA;&#x9;   ' "></norm>
+-   <normId id="' &#xD;&#xA;&#x9; '"></normId>
++<doc>
++   <text>First line&#xD;
++Second line</text>
++   <value>2</value>
++   <compute>value&gt;"0" &amp;&amp; value&lt;"10" ?"valid":"error"</compute>
++   <compute expr="value>&quot;0&quot; &amp;&amp; value&lt;&quot;10&quot; ?&quot;valid&quot;:&quot;error&quot;">valid</compute>
++   <norm attr=" '    &#xD;&#xA;&#x9;   ' "></norm>
++   <normId id="' &#xD;&#xA;&#x9; '"></normId>
+ </doc>
+\ No newline at end of file
+--- a/test/c14n/result/1-1-without-comments/example-5
++++ b/test/c14n/result/1-1-without-comments/example-5
+@@ -1,3 +1,3 @@
+-<doc attrExtEnt="entExt">
+-   Hello, world!
++<doc attrExtEnt="entExt">
++   Hello, world!
+ </doc>
+\ No newline at end of file
+--- a/test/c14n/result/with-comments/example-1
++++ b/test/c14n/result/with-comments/example-1
+@@ -1,6 +1,6 @@
+-<?xml-stylesheet href="doc.xsl"
+-   type="text/xsl"   ?>
+-<doc>Hello, world!<!-- Comment 1 --></doc>
+-<?pi-without-data?>
+-<!-- Comment 2 -->
++<?xml-stylesheet href="doc.xsl"
++   type="text/xsl"   ?>
++<doc>Hello, world!<!-- Comment 1 --></doc>
++<?pi-without-data?>
++<!-- Comment 2 -->
+ <!-- Comment 3 -->
+\ No newline at end of file
+--- a/test/c14n/result/with-comments/example-2
++++ b/test/c14n/result/with-comments/example-2
+@@ -1,11 +1,11 @@
+-<doc>
+-   <clean>   </clean>
+-   <dirty>   A   B   </dirty>
+-   <mixed>
+-      A
+-      <clean>   </clean>
+-      B
+-      <dirty>   A   B   </dirty>
+-      C
+-   </mixed>
++<doc>
++   <clean>   </clean>
++   <dirty>   A   B   </dirty>
++   <mixed>
++      A
++      <clean>   </clean>
++      B
++      <dirty>   A   B   </dirty>
++      C
++   </mixed>
+ </doc>
+\ No newline at end of file
+--- a/test/c14n/result/with-comments/example-3
++++ b/test/c14n/result/with-comments/example-3
+@@ -1,14 +1,14 @@
+-<doc>
+-   <e1></e1>
+-   <e2></e2>
+-   <e3 id="elem3" name="elem3"></e3>
+-   <e4 id="elem4" name="elem4"></e4>
+-   <e5 xmlns="http://www.uvic.ca" xmlns:a="http://www.w3.org" xmlns:b="http://www.ietf.org" attr="I'm" attr2="all" b:attr="sorted" a:attr="out"></e5>
+-   <e6 xmlns:a="http://www.w3.org">
+-       <e7 xmlns="http://www.ietf.org">
+-           <e8 xmlns="">
+-               <e9 xmlns:a="http://www.ietf.org" attr="default"></e9>
+-           </e8>
+-       </e7>
+-   </e6>
++<doc>
++   <e1></e1>
++   <e2></e2>
++   <e3 id="elem3" name="elem3"></e3>
++   <e4 id="elem4" name="elem4"></e4>
++   <e5 xmlns="http://www.uvic.ca" xmlns:a="http://www.w3.org" xmlns:b="http://www.ietf.org" attr="I'm" attr2="all" b:attr="sorted" a:attr="out"></e5>
++   <e6 xmlns:a="http://www.w3.org">
++       <e7 xmlns="http://www.ietf.org">
++           <e8 xmlns="">
++               <e9 xmlns:a="http://www.ietf.org" attr="default"></e9>
++           </e8>
++       </e7>
++   </e6>
+ </doc>
+\ No newline at end of file
+--- a/test/c14n/result/with-comments/example-4
++++ b/test/c14n/result/with-comments/example-4
+@@ -1,9 +1,9 @@
+-<doc>
+-   <text>First line&#xD;
+-Second line</text>
+-   <value>2</value>
+-   <compute>value&gt;"0" &amp;&amp; value&lt;"10" ?"valid":"error"</compute>
+-   <compute expr="value>&quot;0&quot; &amp;&amp; value&lt;&quot;10&quot; ?&quot;valid&quot;:&quot;error&quot;">valid</compute>
+-   <norm attr=" '    &#xD;&#xA;&#x9;   ' "></norm>
+-   <normId id="' &#xD;&#xA;&#x9; '"></normId>
++<doc>
++   <text>First line&#xD;
++Second line</text>
++   <value>2</value>
++   <compute>value&gt;"0" &amp;&amp; value&lt;"10" ?"valid":"error"</compute>
++   <compute expr="value>&quot;0&quot; &amp;&amp; value&lt;&quot;10&quot; ?&quot;valid&quot;:&quot;error&quot;">valid</compute>
++   <norm attr=" '    &#xD;&#xA;&#x9;   ' "></norm>
++   <normId id="' &#xD;&#xA;&#x9; '"></normId>
+ </doc>
+\ No newline at end of file
+--- a/test/c14n/result/with-comments/example-5
++++ b/test/c14n/result/with-comments/example-5
+@@ -1,4 +1,4 @@
+-<doc attrExtEnt="entExt">
+-   Hello, world!
+-</doc>
++<doc attrExtEnt="entExt">
++   Hello, world!
++</doc>
+ <!-- Let world.txt contain "world" (excluding the quotes) -->
+\ No newline at end of file
+--- a/test/c14n/result/without-comments/example-1
++++ b/test/c14n/result/without-comments/example-1
+@@ -1,4 +1,4 @@
+-<?xml-stylesheet href="doc.xsl"
+-   type="text/xsl"   ?>
+-<doc>Hello, world!</doc>
++<?xml-stylesheet href="doc.xsl"
++   type="text/xsl"   ?>
++<doc>Hello, world!</doc>
+ <?pi-without-data?>
+\ No newline at end of file
+--- a/test/c14n/result/without-comments/example-2
++++ b/test/c14n/result/without-comments/example-2
+@@ -1,11 +1,11 @@
+-<doc>
+-   <clean>   </clean>
+-   <dirty>   A   B   </dirty>
+-   <mixed>
+-      A
+-      <clean>   </clean>
+-      B
+-      <dirty>   A   B   </dirty>
+-      C
+-   </mixed>
++<doc>
++   <clean>   </clean>
++   <dirty>   A   B   </dirty>
++   <mixed>
++      A
++      <clean>   </clean>
++      B
++      <dirty>   A   B   </dirty>
++      C
++   </mixed>
+ </doc>
+\ No newline at end of file
+--- a/test/c14n/result/without-comments/example-3
++++ b/test/c14n/result/without-comments/example-3
+@@ -1,14 +1,14 @@
+-<doc>
+-   <e1></e1>
+-   <e2></e2>
+-   <e3 id="elem3" name="elem3"></e3>
+-   <e4 id="elem4" name="elem4"></e4>
+-   <e5 xmlns="http://www.uvic.ca" xmlns:a="http://www.w3.org" xmlns:b="http://www.ietf.org" attr="I'm" attr2="all" b:attr="sorted" a:attr="out"></e5>
+-   <e6 xmlns:a="http://www.w3.org">
+-       <e7 xmlns="http://www.ietf.org">
+-           <e8 xmlns="">
+-               <e9 xmlns:a="http://www.ietf.org" attr="default"></e9>
+-           </e8>
+-       </e7>
+-   </e6>
++<doc>
++   <e1></e1>
++   <e2></e2>
++   <e3 id="elem3" name="elem3"></e3>
++   <e4 id="elem4" name="elem4"></e4>
++   <e5 xmlns="http://www.uvic.ca" xmlns:a="http://www.w3.org" xmlns:b="http://www.ietf.org" attr="I'm" attr2="all" b:attr="sorted" a:attr="out"></e5>
++   <e6 xmlns:a="http://www.w3.org">
++       <e7 xmlns="http://www.ietf.org">
++           <e8 xmlns="">
++               <e9 xmlns:a="http://www.ietf.org" attr="default"></e9>
++           </e8>
++       </e7>
++   </e6>
+ </doc>
+\ No newline at end of file
+--- a/test/c14n/result/without-comments/example-4
++++ b/test/c14n/result/without-comments/example-4
+@@ -1,9 +1,9 @@
+-<doc>
+-   <text>First line&#xD;
+-Second line</text>
+-   <value>2</value>
+-   <compute>value&gt;"0" &amp;&amp; value&lt;"10" ?"valid":"error"</compute>
+-   <compute expr="value>&quot;0&quot; &amp;&amp; value&lt;&quot;10&quot; ?&quot;valid&quot;:&quot;error&quot;">valid</compute>
+-   <norm attr=" '    &#xD;&#xA;&#x9;   ' "></norm>
+-   <normId id="' &#xD;&#xA;&#x9; '"></normId>
++<doc>
++   <text>First line&#xD;
++Second line</text>
++   <value>2</value>
++   <compute>value&gt;"0" &amp;&amp; value&lt;"10" ?"valid":"error"</compute>
++   <compute expr="value>&quot;0&quot; &amp;&amp; value&lt;&quot;10&quot; ?&quot;valid&quot;:&quot;error&quot;">valid</compute>
++   <norm attr=" '    &#xD;&#xA;&#x9;   ' "></norm>
++   <normId id="' &#xD;&#xA;&#x9; '"></normId>
+ </doc>
+\ No newline at end of file
+--- a/test/c14n/result/without-comments/example-5
++++ b/test/c14n/result/without-comments/example-5
+@@ -1,3 +1,3 @@
+-<doc attrExtEnt="entExt">
+-   Hello, world!
++<doc attrExtEnt="entExt">
++   Hello, world!
+ </doc>
+\ No newline at end of file
